@@ -1,17 +1,27 @@
+import module.printPendu as printPendu
 
 # Demande à l'utilisateur d'écrire lettre par lettre
 # Tant que le mot caché est différent du mot donné par l'utilisateur
 # Si la lettre n'est pas dans le mot appelle la fonction des erreurs
 # Si la lettre existe appelle la fonction de rajout de lettre
 def searchWord(randomWord, hiddenWord):
-    while hiddenWord != randomWord:
+    nb_erreurs = 0 # Compteur d'erreur
+
+    while hiddenWord != randomWord and nb_erreurs < 8:
         letter = input("Veuillez rentrer une lettre : ").lower()
+
         if len(letter) == 1 and randomWord.find(letter) == -1:
-            print("La lettre n'est pas dedans")
+            nb_erreurs += 1
+            print(f"La lettre n'est pas dedans. Erreurs : {nb_erreurs}/{8}")
+            printPendu.afficher_pendu(nb_erreurs) # Affichage du pendu des erreurs commises
         else:
             hiddenWord= addLetter(randomWord,letter,hiddenWord)
             print(hiddenWord)
-    print("Félicitation vous avez trouvé")
+
+    if hiddenWord == randomWord:
+        print("Félicitations, vous avez trouvé le mot !")
+    else :
+        print("Désolé, vous avez perdu. Le mot était :", randomWord)
 
 
 # Transforme le mot en liste
