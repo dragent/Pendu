@@ -1,8 +1,8 @@
 import numpy as np
 
 
-# Choisi un mot aléatoire
-def randomWord(array) :
-    max= len(array)
-    return array[np.random.randint(0,max)]
-        
+randomArrayWord=["python","vipère","cobra","kaai","serpent"]
+
+# Renvoie une variable aléatoire donnée dans le tableau
+def randomWord() :
+    return np.random.choice(randomArrayWord) 

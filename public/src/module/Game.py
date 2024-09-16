@@ -5,15 +5,14 @@ import module.printPendu as printPendu
 # Si la lettre n'est pas dans le mot appelle la fonction des erreurs
 # Si la lettre existe appelle la fonction de rajout de lettre
 def searchWord(randomWord, hiddenWord):
-    nb_erreurs = 0 # Compteur d'erreur
+    nb_erreurs = 8 # Compteur d'erreur
 
-    while hiddenWord != randomWord and nb_erreurs < 8:
+    while hiddenWord != randomWord and nb_erreurs > 0:
         letter = input("Veuillez rentrer une lettre : ").lower()
-
         if len(letter) == 1 and randomWord.find(letter) == -1:
-            nb_erreurs += 1
-            print(f"La lettre n'est pas dedans. Erreurs : {nb_erreurs}/{8}")
-            printPendu.afficher_pendu(nb_erreurs) # Affichage du pendu des erreurs commises
+            nb_erreurs -= 1
+            print("La lettre n'est pas dedans.  Il vous reste : ", nb_erreurs)
+            printPendu.afficher_pendu(8-nb_erreurs) # Affichage du pendu des erreurs commises
         else:
             hiddenWord= addLetter(randomWord,letter,hiddenWord)
             print(hiddenWord)
