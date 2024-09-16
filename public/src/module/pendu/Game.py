@@ -1,4 +1,4 @@
-import module.printPendu as printPendu
+import module.pendu.printPendu as printPendu
 
 # Demande à l'utilisateur d'écrire lettre par lettre
 # Tant que le mot caché est différent du mot donné par l'utilisateur

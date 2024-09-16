@@ -1,5 +1,5 @@
-import module.Word as word
-import module.Game as game
+import module.pendu.Word as word
+import module.pendu.Game as game
 
 
 randomWord = word.randomWord()
